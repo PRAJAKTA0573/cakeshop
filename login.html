@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Signup - Sweet Delights</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <!-- Add Supabase JS -->
+    <!-- Use CDN for Supabase JS -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
+        /* Tera original CSS same hai, unchanged */
         * {
             margin: 0;
             padding: 0;
@@ -369,65 +370,73 @@
             </div>
         </div>
     </footer>
-    <script src="./supabase-js-v2.js"></script>
+
     <script>
-        // Initialize Supabase (fixed syntax)
+        // Supabase credentials
         const supabaseUrl = 'https://cmdtdzbbmlfkikaiolxz.supabase.co';
-        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNtZHRkemJibWxma2lrYWlvbHh6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDMyNzQ4MzcsImV4cCI6MjA1ODg1MDgzN30.d27Gx1ewdKqbVo1pNC0zp0qNntrwX0HiSxX-PGEiKUE'
-        const supabase = supabase.createClient(supabaseUrl, supabaseKey); // Fixed: lowercase 'supabase'
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNtZHRkemJibWxma2lrYWlvbHh6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDMyNzQ4MzcsImV4cCI6MjA1ODg1MDgzN30.d27Gx1ewdKqbVo1pNC0zp0qNntrwX0HiSxX-PGEiKUE';
 
-        const menuIcon = document.querySelector('.menu-icon');
-        const nav = document.querySelector('nav');
-        const signupForm = document.getElementById('signupForm');
-        const signupMessage = document.getElementById('signupMessage');
-        const signupButton = document.getElementById('signupButton');
+        // Check if Supabase loaded
+        if (typeof supabase === 'undefined') {
+            console.error('Supabase library not loaded!');
+            document.getElementById('signupMessage').textContent = 'Error: Supabase not loaded. Check internet or CDN.';
+        } else {
+            const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+            console.log('Supabase initialized successfully');
 
-        // Signup Handler with basic validation and loading state
-        signupForm.onsubmit = async function(e) {
-            e.preventDefault();
+            const menuIcon = document.querySelector('.menu-icon');
+            const nav = document.querySelector('nav');
+            const signupForm = document.getElementById('signupForm');
+            const signupMessage = document.getElementById('signupMessage');
+            const signupButton = document.getElementById('signupButton');
 
-            const username = document.getElementById('signupUsername').value.trim();
-            const email = document.getElementById('signupEmail').value.trim();
-            const password = document.getElementById('signupPassword').value;
+            signupForm.onsubmit = async function(e) {
+                e.preventDefault();
 
-            // Basic client-side validation
-            if (username.length < 3) {
-                signupMessage.textContent = 'Username must be at least 3 characters long.';
-                return;
-            }
-            if (password.length < 6) {
-                signupMessage.textContent = 'Password must be at least 6 characters long.';
-                return;
-            }
+                const username = document.getElementById('signupUsername').value.trim();
+                const email = document.getElementById('signupEmail').value.trim();
+                const password = document.getElementById('signupPassword').value;
 
-            // Disable button during submission
-            signupButton.disabled = true;
-            signupMessage.textContent = 'Signing up...';
-
-            const { data, error } = await supabase.auth.signUp({
-                email: email,
-                password: password,
-                options: {
-                    data: { username: username }, // Store username in user metadata
-                    emailRedirectTo: 'http://localhost:3000/login.html' // Redirect after email confirmation
+                if (username.length < 3) {
+                    signupMessage.textContent = 'Username must be at least 3 characters long.';
+                    return;
                 }
-            });
+                if (password.length < 6) {
+                    signupMessage.textContent = 'Password must be at least 6 characters long.';
+                    return;
+                }
 
-            if (error) {
-                signupMessage.textContent = error.message;
-            } else {
-                signupMessage.textContent = 'Signup successful! Please check your email to confirm.';
-                signupForm.reset(); // Clear form on success
-            }
+                signupButton.disabled = true;
+                signupMessage.textContent = 'Signing up...';
+                console.log('Sending signup request:', { email, username });
 
-            // Re-enable button
-            signupButton.disabled = false;
-        };
+                try {
+                    const { data, error } = await supabase
+                        .from('users')
+                        .insert([
+                            { username: username, email: email, password: password }
+                        ]);
 
-        // Mobile menu toggle
-        menuIcon.onclick = function() {
-            nav.classList.toggle('active');
-        };
+                    if (error) {
+                        console.error('Signup error:', error.message);
+                        signupMessage.textContent = error.message;
+                    } else {
+                        console.log('Signup successful:', data);
+                        signupMessage.textContent = 'Signup successful!';
+                        signupForm.reset();
+                    }
+                } catch (err) {
+                    console.error('Unexpected error:', err);
+                    signupMessage.textContent = 'Something went wrong. Please try again.';
+                }
+
+                signupButton.disabled = false;
+            };
+
+            menuIcon.onclick = function() {
+                nav.classList.toggle('active');
+            };
+        }
     </script>
 </body>
 </html>

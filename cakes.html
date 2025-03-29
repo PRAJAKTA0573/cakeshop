@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Arrivals - Sweet Delights</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #fff4f9;
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding-bottom: 100px; /* Space for fixed footer */
+        }
+
+        /* Header */
+        header {
+            background: #fff;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #ff69b4;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+            border-radius: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover img {
+            transform: scale(1.1);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            padding: 5px 10px;
+            transition: color 0.3s ease, border-bottom 0.3s ease;
+        }
+
+        nav a:hover, nav a.active {
+            color: #ff69b4;
+            border-bottom: 2px solid #ff69b4;
+        }
+
+        /* Banner */
+        .banner {
+            background: #ffe6f0;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .banner h1 {
+            font-size: 40px;
+            color: #ff69b4;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+            margin-bottom: 10px;
+        }
+
+        .banner p {
+            font-size: 18px;
+            color: #555;
+        }
+
+        /* New Arrivals Content */
+        .arrivals-content {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .arrivals-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .arrivals-header h2 {
+            font-size: 28px;
+            color: #ff69b4;
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .arrivals-header h2::after {
+            content: '✨';
+            margin-left: 10px;
+        }
+
+        .arrivals-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            justify-items: center;
+        }
+
+        /* Card Styles */
+        .card {
+            position: relative;
+            width: 250px;
+            height: 300px;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .bg {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            width: 240px;
+            height: 290px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(24px);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px;
+            z-index: 2;
+        }
+
+        .blob {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background-color: #ff69b4;
+            opacity: 0.7;
+            filter: blur(12px);
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            animation: blob-bounce 5s infinite ease;
+        }
+
+        @keyframes blob-bounce {
+            0% { transform: translate(-50%, -50%) scale(1); }
+            25% { transform: translate(-50%, -50%) scale(1.05) translate(20px, 0); }
+            50% { transform: translate(-50%, -50%) scale(1) translate(20px, 20px); }
+            75% { transform: translate(-50%, -50%) scale(1.05) translate(0, 20px); }
+            100% { transform: translate(-50%, -50%) scale(1); }
+        }
+
+        .card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 5px;
+            z-index: 3;
+        }
+
+        .card h3 {
+            font-size: 18px;
+            color: #333;
+            font-weight: 600;
+            z-index: 3;
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        .card p {
+            font-size: 16px;
+            color: #ff69b4;
+            z-index: 3;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: #fff;
+            padding: 20px 5%;
+            text-align: center;
+            font-size: 14px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-content p {
+            color: #bbb;
+            margin: 0;
+        }
+
+        .footer-content i {
+            color: #ff69b4;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            color: #ff69b4;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #fff;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 3%;
+                flex-wrap: wrap;
+            }
+
+            nav {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background: #fff;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                padding: 20px;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            }
+
+            nav.active {
+                display: flex;
+            }
+
+            .banner h1 {
+                font-size: 32px;
+            }
+
+            .arrivals-list {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .banner {
+                padding: 40px 15px;
+            }
+
+            .banner h1 {
+                font-size: 28px;
+            }
+
+            .banner p {
+                font-size: 16px;
+            }
+
+            .arrivals-header h2 {
+                font-size: 24px;
+            }
+
+            .card {
+                width: 100%;
+                max-width: 280px;
+            }
+
+            .bg {
+                width: calc(100% - 10px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">
+            <img src="logo3.jpg" alt="Logo">
+           
+        </a>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="cakes.html">Cakes</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="review.html">Reviews</a>
+            <a href="newarrivals.html" class="active">New Arrivals</a>
+        </nav>
+    </header>
+
+    <section class="banner">
+        <h1>CAKES</h1>
+    </section>
+
+    <div class="arrivals-content">
+        
+        <div class="arrivals-list">
+            <a href="cake1.html" class="card">
+                <div class="bg">
+                    <img src="pis.jpg" alt="Pistachio Cake">
+                    <h3>Pistachio</h3>
+                    <p>$600</p>
+                </div>
+                <div class="blob"></div>
+            </a>
+            <a href="cake2.html" class="card">
+                <div class="bg">
+                    <img src="str.jpg" alt="Strawberry Cake">
+                    <h3>Strawberry</h3>
+                    <p>$400</p>
+                </div>
+                <div class="blob"></div>
+            </a>
+            <a href="p1.html" class="card">
+                <div class="bg">
+                    <img src="pin.jpg" alt="Pineapple Cake">
+                    <h3>Pineapple</h3>
+                    <p>$50</p>
+                </div>
+                <div class="blob"></div>
+            </a>
+            <a href="p2.html" class="card">
+                <div class="bg">
+                    <img src="cho.jpg" alt="Chocolate Cake">
+                    <h3>Chocolate</h3>
+                    <p>$40</p>
+                </div>
+                <div class="blob"></div>
+            </a>
+            <a href="cake5.html" class="card">
+                <div class="bg">
+                    <img src="blu.jpg" alt="Blueberry Cheesecake">
+                    <h3>Blueberry Cheesecake</h3>
+                    <p>$500</p>
+                </div>
+                <div class="blob"></div>
+            </a>
+            <a href="cake6.html" class="card">
+                <div class="bg">
+                    <img src="bis.jpg" alt="Fresh Fruit Tart">
+                    <h3>Biscoff</h3>
+                    <p>$600</p>
+                </div>
+                <div class="blob"></div>
+            </a>
+            <a href="cake7.html" class="card">
+                <div class="bg">
+                    <img src="wed1.jpg" alt="Wedding Cake">
+                    <h3>Wedding Cake</h3>
+                    <p>$1500</p>
+                </div>
+                <div class="blob"></div>
+            </a>
+
+            <a href="cake8.html" class="card">
+                <div class="bg">
+                    <img src="wed2.jpg" alt="Wedding Cake">
+                    <h3>Wedding Cake</h3>
+                    <p>$2000</p>
+                </div>
+                <div class="blob"></div>
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>© 2025 Sweet Delights | Made with <i class="fas fa-heart"></i></p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Optional: Add mobile menu toggle if needed
+        const nav = document.querySelector('nav');
+        const menuIcon = document.createElement('div');
+        menuIcon.classList.add('menu-icon');
+        menuIcon.innerHTML = '<i class="fa-solid fa-bars"></i>';
+        header.appendChild(menuIcon);
+
+
+        menuIcon.onclick = function() {
+            nav.classList.toggle('active');
+        };
+    </script>
+</body>
+</html>

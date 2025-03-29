@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
+    <link rel="stylesheet" href="product.css"/>
+    <title>CakeShop - Product</title>
+</head>
+<body>
+   
+    <div class="product-container">
+        <div class="product-image">
+            <img src="wed2.jpg" alt="Product Image"/>
+        </div>
+        <div class="product-details">
+            <h1 class="product-title">  Wedding Cake </h1>
+            <p class="product-description">
+                Elegant and luxurious, symbolizing love with multiple tiers and exquisite designs.
+            </p>
+            <div class="product-stock">
+                Stock: <span class="stock-status">In Stock</span>
+            </div>
+            <div class="product-weight">
+                <label for="weight">Weight:</label>
+                <select id="weight" name="weight" onchange="updatePrice()">
+                    <option value="0.5">1/2 kg</option>
+                    <option value="1" selected>1 kg</option>
+                    <option value="2">2 kg</option>
+                </select>
+            </div>
+            <div class="product-message">
+                <label for="message">Message on Cake:</label>
+                <input type="text" id="message" placeholder="e.g., Happy Birthday"/>
+            </div>
+            <div class="product-quantity">
+                <label>Quantity:</label>
+                <button class="quantity-btn" onclick="changeQuantity(-1)">-</button>
+                <span id="quantity">1</span>
+                <button class="quantity-btn" onclick="changeQuantity(1)">+</button>
+            </div>
+            <p class="product-price" id="price">$2000</p>
+            <button class="add-to-cart" onclick="addToCart()">
+                <i class="fa-solid fa-cart-plus"></i> Add to Cart
+            </button>
+        </div>
+    </div>
+   
+</html>
