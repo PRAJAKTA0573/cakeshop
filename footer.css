@@ -1,0 +1,46 @@
+.footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 5%;
+    background: #fbb9b9; /* Matching header background */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow like header */
+    font-size: 16px;
+    color: #333;
+    width: 100%;
+    text-align: center;
+}
+
+/* Footer Text */
+.footer p {
+    margin: 5px 0;
+    font-weight: bold;
+    line-height: 1.5;
+}
+
+/* Social Icons */
+.footer .social-icons {
+    display: flex;
+    gap: 20px; /* Similar spacing as header icons */
+    margin-top: 10px;
+}
+
+.footer .social-link {
+    color: #333;
+    text-decoration: none;
+    font-size: 20px;
+    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.footer .social-link:hover {
+    color: #eee7e3; /* Matching hover effect */
+    transform: scale(1.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .footer {
+        padding: 15px;
+    }
+}

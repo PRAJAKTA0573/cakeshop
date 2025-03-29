@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cake Shop - Add to Cart</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; background-color: #ffffff; }
+        .container { width: 50%; margin: auto; background: #ffe6f2; padding: 20px; border-radius: 10px; }
+        .cake { display: flex; justify-content: space-between; align-items: center; padding: 10px; border-bottom: 1px solid #ff99b6; }
+        .cake img { width: 80px; height: 80px; border-radius: 10px; }
+        .cart { margin-top: 20px; padding: 10px; border: 2px solid #ff6699; background: #ffffff; border-radius: 10px; }
+        .invoice { display: none; margin-top: 20px; padding: 15px; border: 2px solid #ff6699; background: #ffffff; border-radius: 10px; text-align: left; }
+        h1, h2 { color: #cc3366; }
+        button { background: #ff6699; color: white; border: none; padding: 5px 10px; cursor: pointer; border-radius: 5px; }
+        button:hover { background: #cc3366; }
+        textarea { padding: 5px; margin: 5px; border-radius: 5px; border: 1px solid #ff6699; width: 90%; }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Cake Shop</h1>
+    <div class="container">
+        <div class="cake">
+            <img src="chocolate_cake.jpg" alt="Chocolate Cake">
+            <span>Chocolate Cake - ₹800</span>
+            <button onclick="addToCart('Chocolate Cake', 800)">Add to Cart</button>
+        </div>
+        <div class="cake">
+            <img src="vanilla_cake.jpg" alt="Vanilla Cake">
+            <span>Vanilla Cake - ₹600</span>
+            <button onclick="addToCart('Vanilla Cake', 600)">Add to Cart</button>
+        </div>
+        <div class="cake">
+            <img src="red_velvet_cake.jpg" alt="Red Velvet Cake">
+            <span>Red Velvet Cake - ₹1000</span>
+            <button onclick="addToCart('Red Velvet Cake', 1000)">Add to Cart</button>
+        </div>
+        
+        <h2>Your Cart</h2>
+        <div class="cart" id="cart"></div>
+        
+        <h3>Additional Instructions</h3>
+        <textarea id="instructions" placeholder="Enter any special requests..."></textarea>
+        
+        <button onclick="confirmOrder()">Confirm Order (Cash on Delivery)</button>
+        
+        <div class="invoice" id="invoice">
+            <h2>Invoice</h2>
+            <p><strong>Order Summary:</strong></p>
+            <div id="invoice-details"></div>
+            <p><strong>Total: ₹<span id="invoice-total"></span></strong></p>
+            <p><strong>Payment Method:</strong> Cash on Delivery</p>
+            <p><strong>Special Instructions:</strong> <span id="invoice-instructions"></span></p>
+        </div>
+    </div>
+
+    <script>
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        
+        function addToCart(name, price) {
+            cart.push({ name, price });
+            localStorage.setItem('cart', JSON.stringify(cart));
+            displayCart();
+        }
+        
+        function displayCart() {
+            let cartDiv = document.getElementById('cart');
+            cartDiv.innerHTML = '';
+            
+            if (cart.length === 0) {
+                cartDiv.innerHTML = '<p>Cart is empty</p>';
+                return;
+            }
+            
+            let total = 0;
+            cart.forEach((item, index) => {
+                total += item.price;
+                cartDiv.innerHTML += `<p>${item.name} - ₹${item.price} <button onclick="removeFromCart(${index})">Remove</button></p>`;
+            });
+            
+            cartDiv.innerHTML += `<h3>Total: ₹${total}</h3>`;
+        }
+        
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            displayCart();
+        }
+
+        function confirmOrder() {
+            if (cart.length === 0) {
+                alert('Your cart is empty. Please add items to proceed.');
+                return;
+            }
+            let instructions = document.getElementById('instructions').value;
+            alert('Order confirmed!\nPayment: Cash on Delivery\nSpecial Instructions: ' + instructions);
+            
+            generateInvoice(instructions);
+            localStorage.removeItem('cart');
+            displayCart();
+        }
+
+        function generateInvoice(instructions) {
+            let invoiceDiv = document.getElementById('invoice');
+            let invoiceDetails = document.getElementById('invoice-details');
+            let invoiceTotal = document.getElementById('invoice-total');
+            let invoiceInstructions = document.getElementById('invoice-instructions');
+            
+            invoiceDetails.innerHTML = '';
+            let total = 0;
+            cart.forEach(item => {
+                total += item.price;
+                invoiceDetails.innerHTML += `<p>${item.name} - ₹${item.price}</p>`;
+            });
+            
+            invoiceTotal.innerText = total;
+            invoiceInstructions.innerText = instructions;
+            invoiceDiv.style.display = 'block';
+        }
+
+        window.onload = displayCart;
+    </script>
+</body>
+</html>

@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Sweet Delights</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #fff4f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: #fff;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #ff69b4;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+            border-radius: 5px;
+        }
+
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+
+        nav a:hover, nav a.active {
+            color: #ff69b4;
+            border-bottom: 2px solid #ff69b4;
+        }
+
+        /* Banner */
+        .banner {
+            background: #ffe6f0;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .banner h1 {
+            font-size: 40px;
+            color: #ff69b4;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+
+        .banner p {
+            font-size: 18px;
+            color: #555;
+        }
+
+        /* Contact Content */
+        .contact-content {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .contact-info {
+            flex: 1;
+            text-align: left;
+        }
+
+        .contact-info h2 {
+            font-size: 28px;
+            color: #ff69b4;
+            margin-bottom: 20px;
+            margin-top: 70px;
+            position: relative;
+        }
+
+        .contact-info h2::after {
+            content: '✨';
+            position: absolute;
+            margin-left: 10px;
+        }
+
+        .contact-info p {
+            margin: 15px 0;
+            font-size: 16px;
+        }
+
+        .contact-info i {
+            color: #ff69b4;
+            margin-right: 10px;
+        }
+
+        .contact-form {
+            flex: 1;
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .contact-form h2 {
+            font-size: 28px;
+            color: #ff69b4;
+            margin-bottom: 20px;
+            position: relative;
+            text-align: left;
+        }
+
+        .contact-form h2::after {
+            content: '🍰';
+            position: absolute;
+            margin-left: 10px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .contact-form textarea {
+            height: 120px;
+            resize: none;
+        }
+
+        .contact-form button {
+            background: #ff69b4;
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .contact-form button:hover {
+            background: #e55a9e;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-content p {
+            color: #bbb;
+            margin: 0;
+        }
+
+        .footer-content i {
+            color: #ff69b4;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            color: #ff69b4;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #fff;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+
+            .banner h1 {
+                font-size: 32px;
+            }
+
+            .contact-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .contact-info, .contact-form {
+                text-align: center;
+            }
+
+            .contact-form h2 {
+                text-align: center;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">
+            <img src="/api/placeholder/40/40" alt="Logo">
+            Sweet Delights
+        </a>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="cakes.html">Cakes</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="aboutus1.html">About</a>
+            <a href="contact.html" class="active">Contact</a>
+        </nav>
+    </header>
+
+    <section class="banner">
+        <h1>Contact Us</h1>
+        <p>Let’s bake some happiness together!</p>
+    </section>
+
+    <div class="contact-content">
+        <div class="contact-info">
+            <h2>Get in Touch</h2>
+            <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+            <p><i class="fas fa-envelope"></i> hello@sweetdelights.com</p>
+            <p><i class="fas fa-map-marker-alt"></i> 123 Cake Lane, Sweetville</p>
+        </div>
+
+        <div class="contact-form">
+            <h2>Send a Message</h2>
+            <form>
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" required></textarea>
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>© 2025 Sweet Delights | Made with <i class="fas fa-heart"></i></p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

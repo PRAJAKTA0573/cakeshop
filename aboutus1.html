@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Sweet Delights</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #fff4f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: #fff;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #ff69b4;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+            border-radius: 5px;
+        }
+
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+
+        nav a:hover, nav a.active {
+            color: #ff69b4;
+            border-bottom: 2px solid #ff69b4;
+        }
+
+        /* Banner */
+        .banner {
+            background: #ffe6f0;
+            padding: 50px 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .banner h1 {
+            font-size: 40px;
+            color: #ff69b4;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+
+        .banner p {
+            font-size: 18px;
+            color: #555;
+        }
+
+        /* Content */
+        .content {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            margin: 60px 0;
+            text-align: center;
+        }
+
+        .section h2 {
+            font-size: 32px;
+            color: #ff69b4;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '✨';
+            position: absolute;
+            margin-left: 10px;
+        }
+
+        .story {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            margin: 40px 0;
+        }
+
+        .story img {
+            width: 50%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .story-text {
+            width: 50%;
+            text-align: left;
+        }
+
+        .story-text h3 {
+            color: #ff69b4;
+            font-size: 26px;
+            margin-bottom: 15px;
+        }
+
+        .values {
+            display: flex;
+            justify-content: space-around;
+            gap: 20px;
+        }
+
+        .value {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            width: 30%;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.05);
+        }
+
+        .value i {
+            font-size: 30px;
+            color: #ff69b4;
+            margin-bottom: 10px;
+        }
+
+        .team {
+            display: flex;
+            justify-content: space-around;
+            gap: 20px;
+        }
+
+        .team-member {
+            width: 23%;
+            background: #fff;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.05);
+        }
+
+        .team-member img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .team-member h3 {
+            font-size: 18px;
+            margin: 10px 0 5px;
+        }
+
+        .team-member p {
+            font-size: 14px;
+            color: #ff69b4;
+        }
+
+        /* Smaller Footer */
+        footer {
+            background: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-content p {
+            color: #bbb;
+            margin: 0;
+        }
+
+        .footer-content i {
+            color: #ff69b4;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            color: #ff69b4;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #fff;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .story, .values, .team {
+                flex-direction: column;
+            }
+
+            .story img, .story-text, .value, .team-member {
+                width: 100%;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">
+            <img src="/api/placeholder/40/40" alt="Logo">
+            Sweet Delights
+        </a>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="cakes.html">Cakes</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="about.html" class="active">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <section class="banner">
+        <h1>About Us</h1>
+        <p>Where sweetness meets magic!</p>
+    </section>
+
+    <div class="content">
+        <div class="section">
+            <p>We’re Sweet Delights—a little cake shop with big dreams! Since 2010, we’ve been whipping up tasty treats that make every moment sparkle.</p>
+        </div>
+
+        <div class="story">
+            <img src="/api/placeholder/500/300" alt="Our Bakery">
+            <div class="story-text">
+                <h3>Our Sweet Start</h3>
+                <p>It all began with Rachel, a cake wizard with a sprinkle of imagination. From her cozy kitchen to three bustling bakeries, we’ve grown by mixing love, laughter, and the yummiest ingredients!</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>What We Believe</h2>
+            <div class="values">
+                <div class="value">
+                    <i class="fas fa-heart"></i>
+                    <h3>Love</h3>
+                    <p>Every cake’s baked with a big dollop of heart.</p>
+                </div>
+                <div class="value">
+                    <i class="fas fa-star"></i>
+                    <h3>Quality</h3>
+                    <p>Only the best goodies make it into our ovens.</p>
+                </div>
+                <div class="value">
+                    <i class="fas fa-paint-brush"></i>
+                    <h3>Fun</h3>
+                    <p>We turn cakes into edible adventures!</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Our Cake Crew</h2>
+            <div class="team">
+                <div class="team-member">
+                    <img src="/api/placeholder/200/200" alt="Rachel">
+                    <h3>Rachel</h3>
+                    <p>Cake Dreamer</p>
+                </div>
+                <div class="team-member">
+                    <img src="/api/placeholder/200/200" alt="Priya">
+                    <h3>Priya</h3>
+                    <p>Frosting Fairy</p>
+                </div>
+                <div class="team-member">
+                    <img src="/api/placeholder/200/200" alt="Amit">
+                    <h3>Amit</h3>
+                    <p>Design Dynamo</p>
+                </div>
+                <div class="team-member">
+                    <img src="/api/placeholder/200/200" alt="Neha">
+                    <h3>Neha</h3>
+                    <p>Wedding Whiz</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>© 2025 Sweet Delights | Made with <i class="fas fa-heart"></i></p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

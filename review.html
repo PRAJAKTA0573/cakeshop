@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviews - Sweet Delights</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #fff4f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: #fff;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #ff69b4;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+            border-radius: 5px;
+        }
+
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+
+        nav a:hover, nav a.active {
+            color: #ff69b4;
+            border-bottom: 2px solid #ff69b4;
+        }
+
+        /* Banner */
+        .banner {
+            background: #ffe6f0;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .banner h1 {
+            font-size: 40px;
+            color: #ff69b4;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+
+        .banner p {
+            font-size: 18px;
+            color: #555;
+        }
+
+        /* Reviews Content */
+        .reviews-content {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .reviews-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .reviews-header h2 {
+            font-size: 28px;
+            color: #ff69b4;
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .reviews-header h2::after {
+            content: '✨';
+            position: absolute;
+            margin-left: 10px;
+        }
+
+        .reviews-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .review-card {
+            background: #fff;
+            width: 300px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        .review-card i {
+            color: #ff69b4;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .review-card p {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .review-card h3 {
+            font-size: 16px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .review-card .stars {
+            color: #ff69b4;
+            margin-bottom: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-content p {
+            color: #bbb;
+            margin: 0;
+        }
+
+        .footer-content i {
+            color: #ff69b4;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            color: #ff69b4;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #fff;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+
+            .banner h1 {
+                font-size: 32px;
+            }
+
+            .reviews-list {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .review-card {
+                width: 100%;
+                max-width: 350px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">
+            <img src="/api/placeholder/40/40" alt="Logo">
+            Sweet Delights
+        </a>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="cakes.html">Cakes</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="reviews.html" class="active">Reviews</a>
+        </nav>
+    </header>
+
+    <section class="banner">
+        <h1>Reviews</h1>
+        <p>What our sweet customers are saying!</p>
+    </section>
+
+    <div class="reviews-content">
+        <div class="reviews-header">
+            <h2>Customer Love</h2>
+        </div>
+        <div class="reviews-list">
+            <div class="review-card">
+                <i class="fas fa-quote-left"></i>
+                <p>"The best cake I’ve ever had! The chocolate frosting was pure magic."</p>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <h3>Sarah M.</h3>
+            </div>
+
+            <div class="review-card">
+                <i class="fas fa-quote-left"></i>
+                <p>"Ordered a custom cake for my wedding—absolutely stunning and delicious!"</p>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <h3>Emily R.</h3>
+            </div>
+
+            <div class="review-card">
+                <i class="fas fa-quote-left"></i>
+                <p>"Such a fun team to work with. My kid’s birthday cake was a hit!"</p>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <h3>Jake T.</h3>
+            </div>
+
+            <div class="review-card">
+                <i class="fas fa-quote-left"></i>
+                <p>"Fast delivery and the cupcakes were adorable and yummy!"</p>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <h3>Lisa K.</h3>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>© 2025 Sweet Delights | Made with <i class="fas fa-heart"></i></p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

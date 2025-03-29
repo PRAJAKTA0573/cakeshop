@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Arrivals - Sweet Delights</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #fff4f9;
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh; /* Ensures body takes full viewport height */
+            padding-bottom: 80px; /* Prevents overlap with fixed footer */
+        }
+
+        /* Header */
+        header {
+            background: #fff;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #ff69b4;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+            border-radius: 5px;
+        }
+
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease; /* Smooth hover transition */
+        }
+
+        nav a:hover, nav a.active {
+            color: #ff69b4;
+            border-bottom: 2px solid #ff69b4;
+        }
+
+        /* Banner */
+        .banner {
+            background: #ffe6f0;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .banner h1 {
+            font-size: 40px;
+            color: #ff69b4;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .banner p {
+            font-size: 18px;
+            color: #555;
+        }
+
+        /* New Arrivals Content */
+        .arrivals-content {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .arrivals-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .arrivals-header h2 {
+            font-size: 28px;
+            color: #ff69b4;
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block; /* Ensures sparkle aligns properly */
+        }
+
+        .arrivals-header h2::after {
+            content: '✨';
+            position: absolute;
+            margin-left: 10px;
+        }
+
+        .arrivals-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            justify-items: center;
+        }
+
+        /* Custom Card Styles */
+        .card {
+            position: relative;
+            width: 250px;
+            height: 300px;
+            border-radius: 14px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+            transition: transform 0.3s ease; /* Smooth hover effect */
+        }
+
+        .card:hover {
+            transform: scale(1.05); /* Slight scale on hover */
+        }
+
+        .bg {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            width: 240px;
+            height: 290px;
+            z-index: 2;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(24px);
+            border-radius: 10px;
+            overflow: hidden;
+            outline: 2px solid white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+        }
+
+        .blob {
+            position: absolute;
+            z-index: 1;
+            top: 50%;
+            left: 50%;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background-color: #ff69b4;
+            opacity: 0.7;
+            filter: blur(12px);
+            animation: blob-bounce 5s infinite ease;
+        }
+
+        @keyframes blob-bounce {
+            0% {
+                transform: translate(-50%, -50%) translate3d(0, 0, 0); /* Centered properly */
+            }
+            25% {
+                transform: translate(-50%, -50%) translate3d(50%, 0, 0);
+            }
+            50% {
+                transform: translate(-50%, -50%) translate3d(50%, 50%, 0);
+            }
+            75% {
+                transform: translate(-50%, -50%) translate3d(0, 50%, 0);
+            }
+            100% {
+                transform: translate(-50%, -50%) translate3d(0, 0, 0);
+            }
+        }
+
+        .card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 5px;
+            z-index: 3;
+        }
+
+        .card h3 {
+            font-size: 18px;
+            color: #333;
+            font-weight: 600;
+            z-index: 3;
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        .card p {
+            font-size: 16px;
+            color: #ff69b4;
+            z-index: 3;
+            text-align: center;
+        }
+
+        /* Fixed Footer */
+        footer {
+            background: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            font-size: 14px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Subtle top shadow */
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-content p {
+            color: #bbb;
+            margin: 0;
+        }
+
+        .footer-content i {
+            color: #ff69b4;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            color: #ff69b4;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #fff;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .banner h1 {
+                font-size: 32px;
+            }
+
+            .arrivals-list {
+                grid-template-columns: 1fr;
+            }
+
+            .card {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .bg {
+                width: calc(100% - 10px);
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            /* Mobile navigation toggle (optional improvement) */
+            nav {
+                display: none; /* Could be replaced with a hamburger menu */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .banner {
+                padding: 40px 15px;
+            }
+
+            .banner h1 {
+                font-size: 28px;
+            }
+
+            .banner p {
+                font-size: 16px;
+            }
+
+            .arrivals-header h2 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">
+            <img src="/api/placeholder/40/40" alt="Logo">
+            Sweet Delights
+        </a>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="cakes.html">Cakes</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="review.html">Reviews</a>
+            <a href="newarrivals.html" class="active">New Arrivals</a>
+        </nav>
+    </header>
+
+    <section class="banner">
+        <h1>New Arrivals</h1>
+        <p>Freshly baked delights just for you!</p>
+    </section>
+
+    <div class="arrivals-content">
+        <div class="arrivals-header">
+            <h2>Latest Treats</h2>
+        </div>
+        <div class="arrivals-list">
+            <div class="card">
+                <div class="bg">
+                    <img src="/api/placeholder/240/150" alt="Strawberry Dream Cake">
+                    <h3>Strawberry Dream</h3>
+                    <p>$35</p>
+                </div>
+                <div class="blob"></div>
+            </div>
+
+            <div class="card">
+                <div class="bg">
+                    <img src="/api/placeholder/240/150" alt="Choco Bliss Cake">
+                    <h3>Choco Bliss</h3>
+                    <p>$40</p>
+                </div>
+                <div class="blob"></div>
+            </div>
+
+            <div class="card">
+                <div class="bg">
+                    <img src="/api/placeholder/240/150" alt="Lemon Zest Cupcakes">
+                    <h3>Lemon Zest Cupcakes</h3>
+                    <p>$25 (6-pack)</p>
+                </div>
+                <div class="blob"></div>
+            </div>
+
+            <div class="card">
+                <div class="bg">
+                    <img src="/api/placeholder/240/150" alt="Rainbow Swirl Cake">
+                    <h3>Rainbow Swirl</h3>
+                    <p>$45</p>
+                </div>
+                <div class="blob"></div>
+            </div>
+
+            <div class="card">
+                <div class="bg">
+                    <img src="/api/placeholder/240/150" alt="Vanilla Cloud Cake">
+                    <h3>Vanilla Cloud</h3>
+                    <p>$38</p>
+                </div>
+                <div class="blob"></div>
+            </div>
+
+            <div class="card">
+                <div class="bg">
+                    <img src="/api/placeholder/240/150" alt="Caramel Crunch Cake">
+                    <h3>Caramel Crunch</h3>
+                    <p>$42</p>
+                </div>
+                <div class="blob"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>© 2025 Sweet Delights | Made with <i class="fas fa-heart"></i></p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
